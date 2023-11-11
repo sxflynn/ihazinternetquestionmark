@@ -1,4 +1,4 @@
-param location string = 'East US 2'
+param location string = 'West US'
 
 resource appServicePlan 'Microsoft.Web/serverfarms@2020-06-01' = {
 name: 'FrontEndAppServicePlan'
