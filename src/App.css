@@ -40,3 +40,13 @@
 .read-the-docs {
   color: #888;
 }
+
+.connected {
+  background-color: green;
+  color: white;
+}
+
+.disconnected {
+  background-color: red;
+  color: black;
+}
