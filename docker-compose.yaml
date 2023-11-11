@@ -1,0 +1,19 @@
+version: '3.8'
+services:
+  react-frontend:
+    build:
+      dockerfile: ./Dockerfile
+    ports:
+      - "5173:5173"
+    volumes:
+      - ./:/srv/app
+      - node_modules:/srv/app/node_modules
+    networks:
+      - ihazinternet-network
+
+volumes:
+  node_modules:
+
+networks:
+  ihazinternet-network:
+    driver: bridge
