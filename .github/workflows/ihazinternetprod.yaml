@@ -17,6 +17,23 @@ jobs:
 
       - name: Login to Azure
         run: az login --service-principal -u ${{ secrets.AZURE_APPID}} -p ${{ secrets.AZURE_PASSWORD}} --tenant ${{ secrets.AZURE_TENANT}}
+
       - name: Logout
         run: |
           az logout
+
+  build-infrastructure:
+    name: build-infra
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+
+      - name: Login to Azure
+        run: az login --service-principal -u ${{ secrets.AZURE_APPID}} -p ${{ secrets.AZURE_PASSWORD}} --tenant ${{ secrets.AZURE_TENANT}}
+
+      - name: build-bicep
+        run: |
+          az deployment group create \
+          --resource-group 'ihazinternetgroup' \
+          --template-file 'infra/main.bicep'
