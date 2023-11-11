@@ -1,9 +1,9 @@
-name: ihazinternet_deply
+name: ihazinternet_deploy
 on:
   workflow_dispatch:
-    push:
-      branches:
-        - "main"
+  push:
+    branches:
+      - "main"
 jobs:
   validate:
     name: validate
@@ -14,11 +14,6 @@ jobs:
     steps:
       - name: Checkout repository
         uses: actions/checkout@v2
-
-      - name: Set up Azure CLI
-        uses: azure/setup-azure-cli@v1
-        with:
-          azcliversion: latest
 
       - name: Login to Azure
         run: az login --service-principal -u ${{ secrets.AZURE_APPID}} -p ${{ secrets.AZURE_PASSWORD}} --tenant ${{ secrets.AZURE_TENANT}}
