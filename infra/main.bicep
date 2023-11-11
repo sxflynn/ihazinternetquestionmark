@@ -1,4 +1,4 @@
-param location string = resourceGroup().location
+param location string = 'East US 2'
 
 resource appServicePlan 'Microsoft.Web/serverfarms@2020-06-01' = {
 name: 'FrontEndAppServicePlan'
