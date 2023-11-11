@@ -4,7 +4,7 @@ import './App.css'
 
 function App() {
 
-    const [hasInternet, setInternet] = useState(false)
+    const [hasInternet, setInternet] = useState(null)
 
     const connectivityCheckInterval = 5000;
 
@@ -32,12 +32,12 @@ function App() {
     }, []);
 
     return (
-        <>
-            <div>
+        <div class={hasInternet ? 'connected' : 'disconnected'}>
+            <>
                 {hasInternet !== null && <ConnectDetect hasInternet={hasInternet} />}
-            </div>
+            </>
 
-        </>
+        </div>
     )
 }
 
